@@ -6,12 +6,12 @@ weight=$(jq -r '.weight' data.json)
 height=$(jq -r '.height' data.json)
 
 # Format values
-weight_kg=$((weight / 10))
-height_m=$(awk "BEGIN {printf \"%.1f\", $height / 10}")
+formatted_weight=$((weight / 10))
+formatted_height=$(awk "BEGIN {printf \"%.1f\", $height / 10}")
 
 # Capitalize name and type using sed
 name_capitalized=$(echo "$name" | sed 's/.*/\u&/')
 type_capitalized=$(echo "$type" | sed 's/.*/\u&/')
 
 # Final output
-echo "$name_capitalized is of type $type_capitalized, weighs ${weight_kg}kg, and is ${height_m}m tall."
+echo "$name is of type $type, weighs ${formatted_weight}kg, and is ${formatted_height}m tall."
